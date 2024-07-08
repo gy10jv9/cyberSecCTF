@@ -1,0 +1,19 @@
++-----------------------+
++       Colors          +
++-----------------------+
+# Generate a Default .dircolors File:
+$ dircolors -p > ~/.dircolors
+
+# Edit the .dircolors File: using text editor or nano
+
+# Apply the Colors:
+$ eval $(dircolors ~/.dircolors)
+
+# (optional) make it permanent by adding in .bashrc using text editor or nano
+$ sudo nano ~/.bashrc
+eval $(dircolors ~/.dircolors)
+$ source ~/.bashrc
+
+*** preference ***
+change all 42(green bg color) to 47(white bg color)
+******************

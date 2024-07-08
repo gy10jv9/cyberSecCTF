@@ -1,0 +1,72 @@
+# Add your username to your Linux-Distro
+$ useradd -m -G wheel -s /bin/bash {username}
+$ passwd {username}
+$ exit
+
+# To set your User as Default User open PowerShell (shift+right_click) in the installation folder and run
+$ ./blackArch.exe config --default-user {username}
+
+# (optional) change to root to ommit the need for "sudo"
+$ sudo -i
+
+# reset network especially if ping google.com is not working
+$ sudo systemctl restart systemd-resolved.service 
+
+# Update everything
+$ sudo pacman -Syu
+
+# change server via commenting or putting "#" sign in the unavailable server
+$ sudo nano /etc/pacman.d/mirrorlist
+
+# Remove the corrupted database files:
+$sudo rm -f /var/lib/pacman/sync/*.db
+
+# Re-sync the package databases:
+$ sudo pacman -Syy
+
+#Upgrade your system:
+$ sudo pacman -Syu
+
+# logout from root
+$ exit
+
+# fix keys
+$ sudo pacman-key --init
+$ sudo pacman-key --populate archlinux blackarch
+
+# bypass key requirements
+$ sudo nano /etc/pacman.conf
+# change from "Required DatabaseOptional"
+SigLevel = Never 
+
+# Upgrade your system:
+$ sudo pacman -Syyu
+
+# +-------------+
+# +     GUI     +
+# +-------------+
+# (optional) change to root to ommit the need for "sudo"
+$ sudo -i
+
+# Install the and launch vcxserv app on windows system. refer to https://github.com/Rishu20/Blackarchwsl/wiki/VCXSRV
+# Install Qt5 in Linux distro
+$ sudo pacman -S qt5
+
+# Install the Desktop environment for lxde
+$ sudo pacman -S lxde
+
+# logout from root
+$ exit
+
+# Run 
+$ sudo nano .bashrc
+# Add "export DISPLAY=localhost:0.0" to the last line of .bashrc file
+
+# restart
+
+# Now check <wsl_ip> by running ipconfig in PowerShell/cmd
+
+$ DISPLAY=<wsl_ip>:0
+
+# Launch Desktop environment
+$ sudo startlxde

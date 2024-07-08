@@ -1,0 +1,6 @@
++----------------------------------+
++       Drive Mount Problem        +
++----------------------------------+
+# ex: no files or folders in "/mnt/c" or "/mnt/d"
+$ sudo mount -t drvfs C: /mnt/c
+# ignore error
