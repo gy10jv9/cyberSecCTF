@@ -1,0 +1,8 @@
++-------------------------+
++       Platform          +
++-------------------------+
+# BlackArch Linux WSL
+https://github.com/Rishu20/Blackarchwsl
+
+# Bitvise SSH Client
+https://www.bitvise.com/ssh-client
