@@ -51,4 +51,11 @@ $ export PATH=$PATH:$JAVA_HOME/bin
 $ source ~/.bashrc
 $ java -version
 
-
+# C++/C
+$ sudo pacman -Syu
+$ sudo pacman -S gcc
+$ gcc --version
+# install other development tools
+$ sudo pacman -S make
+$ sudo pacman -S gdb
+$ sudo pacman -S base-devel
