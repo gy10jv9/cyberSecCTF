@@ -1,0 +1,25 @@
+Bandit Level 5 → Level 6
+Level Goal
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+
+
+###
+# sample guide:
+$ find /path/to/search -type f -size 1033c ! -perm /111 -exec ls -lh {} +
+
+# "/path/to/search" Replace this with the directory you want to search in.
+# "-type f" Find files only.
+# "-size 1033c" Look for files that are exactly 1033 bytes.
+# "! -perm /111" Exclude executable files (files that have any of the executable bits set).
+# "-exec ls -lh {} +" List the found files in a human-readable format.
+
+#  Run directly on terminal or create and run the script with .sh extension + use "chmod +x <filename>" to create executable permission (optional).
+$-----
+for directory in maybehere*; do
+    find "$directory" -type f -size 1033c ! -perm /111 -exec ls -lh {} +
+done
+$-----
