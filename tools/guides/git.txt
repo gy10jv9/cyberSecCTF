@@ -1,0 +1,16 @@
++-----------------------+
++       Cloning         +
++-----------------------+
+$ git clone https://<YOUR_GITHUB_USERNAME>:<YOUR_PERSONAL_ACCESS_TOKEN>@github.com/<YOUR_USERNAME>/<YOUR_REPO>.git
+
++-----------------------+
++       Config          +
++-----------------------+
+# (Optional) Configure a credential helper to cache your credentials for a set period of time.
+$ git config --global credential.helper cache
+# cache your credentials in memory for an hour (3600 seconds)
+$ git config --global credential.helper 'cache --timeout=3600'
+
+# Configure email and username. Remove "--global" to set identity only to current repository.
+$ git config --global user.email "you@example.com"
+$ git config --global user.name "Your Name"
