@@ -1,3 +1,8 @@
+# CHECKSEC for checking the properties and security settings of binaries
+$ sudo pacman -S checksec
+$ checksec --version
+
+
 # EXIFTOOL for checking metadata of a file
 # Update the package list:
 $ sudo pacman -Sy
@@ -28,3 +33,22 @@ $ nc -h
 
 # WHICH for finding files
 $ sudo pacman -S which
+
+
++---------------------------+
++       Languages           +
++---------------------------+
+# JAVA
+$ sudo pacman -Syyu
+# search JDK packages
+$ sudo pacman -Ss jdk
+# Choose the version you want to install. For example, to install OpenJDK 17 but preferably the latest, run:
+$ sudo pacman -S jdk17-openjdk
+# To set the JAVA_HOME environment variable, you can add the following lines to your ~/.bashrc or ~/.zshrc file:
+$ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+$ export PATH=$PATH:$JAVA_HOME/bin
+# After editing the profile file, source it to apply the changes:
+$ source ~/.bashrc
+$ java -version
+
+
