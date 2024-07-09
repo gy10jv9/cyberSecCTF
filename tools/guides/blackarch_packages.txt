@@ -1,0 +1,30 @@
+# EXIFTOOL for checking metadata of a file
+# Update the package list:
+$ sudo pacman -Sy
+# Install exiftool:
+$ sudo pacman -S perl-image-exiftool
+# Try running the following command to verify the installation and check the version:
+$ exiftool -ver
+# Check if exiftool is installed:
+$ pacman -Ql perl-image-exiftool | grep bin
+# Locate exiftool:
+$ which exiftool
+# You can run exiftool using the full path:
+$ /usr/bin/vendor_perl/exiftool -ver
+# Create a symbolic link to make exiftool accessible from anywhere:
+$ sudo ln -s /usr/bin/vendor_perl/exiftool /usr/local/bin/exiftool
+# After creating the symbolic link, you can verify the installation again:
+$ exiftool -ver
+
+
+# JOHN THE RIPPER for cracking passwords
+$ sudo pacman -S john
+
+
+# NETCAT for connecting using "nc"
+$ sudo pacman -S netcat
+$ nc -h
+
+
+# WHICH for finding files
+$ sudo pacman -S which

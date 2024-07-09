@@ -5,8 +5,21 @@
 $ sudo mount -t drvfs C: /mnt/c
 # ignore error
 
+
 +-----------------------------------+
 +       Network Connection          +
 +-----------------------------------+
 # if $ping google.com not working
-$ sudo systemctl restart systemd-resolved.service 
+$ sudo systemctl restart systemd-resolved.service
+
+
++---------------------------------------+
++       Missing Signatures/Keys         +
++---------------------------------------+
+# problem: missing python signatures
+# Change SigLevel = Required DatabaseOptional to SigLevel = Never
+$sudo nano /etc/pacman.conf
+# Update packages
+$sudo pacman -Syu
+# Change SigLevel = Never back to SigLevel = Required DatabaseOptional (optional)
+$sudo nano /etc/pacman.conf
