@@ -4,3 +4,9 @@
 # ex: no files or folders in "/mnt/c" or "/mnt/d"
 $ sudo mount -t drvfs C: /mnt/c
 # ignore error
+
++-----------------------------------+
++       Network Connection          +
++-----------------------------------+
+# if $ping google.com not working
+$ sudo systemctl restart systemd-resolved.service 

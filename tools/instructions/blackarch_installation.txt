@@ -30,11 +30,11 @@ $ sudo pacman -Syu
 # logout from root
 $ exit
 
-# fix keys
+# (optional) fix keys
 $ sudo pacman-key --init
 $ sudo pacman-key --populate archlinux blackarch
 
-# bypass key requirements
+# (optional) bypass key requirements
 $ sudo nano /etc/pacman.conf
 # change from "Required DatabaseOptional"
 SigLevel = Never 
