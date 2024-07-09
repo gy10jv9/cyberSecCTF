@@ -1,0 +1,57 @@
+Level 10 -> Level 11
+Here the password for the next level is stored in the file “data.txt” in the home directory. The data in this file is base64 encoded. We can “cat” the file and see that there’s just one word in it. So we run the command ‘base64 -d data.txt’ and get the password for the next level.
+
+
+Level 11 -> Level 12
+Here we see another “data.txt” file in the home directory. The webpage for this level says that there are upper and lower case characters in this file which are rotated by 13 positions. So basically each letter in a string is replaced by a character at the 13th position from it. So a will be replaced by n, b will be replaced by o, and so on. This is basically a special type of Ceaser's cipher. After reading around for a bit, I found a StackOverflow link explaining to decrypt this cipher using the ‘tr’ command which stands for translate. This command translates a set of characters into another set of characters. So we can then run the command “tr ‘[a-z][A-Z]’ ‘[n-za-m][N-ZA-M]’”. This command will basically rearrange the characters decrypt the data in the file.
+
+
+Level 12 -> Level 13
+In this level, the password is stored in “data.txt” which is a hexdump of a file that’s been repeatedly compressed. The webpage for this level suggests that we make a folder in the /tmp directory, copy the file in this directory and work on it. So we can create a directory using ‘mkdir /tmp/shirahoshi’ and copy the file in this location by running the command ‘cp data.txt /tmp/shirahoshi’. We then rename the file using the command ‘mv data.txt hex.txt’.
+
+Here we need to first decrypt the hex dump file and for that, we use a tool called xxd. xxd is a tool that can make a hex dump and reverse it. So we use ‘xxd -r hexdump.txt > new’. This should reverse the hex dump file and store its content in the file “new”. Now we know that this file has been repeatedly compressed. On running ‘file new’, we find out that it has been zipped by using gzip. Now before we start decompressing the file, we need to make sure that it has the proper extension else the tools won’t work. So we first change the extension and rename the file new.gz. We can now unzip the file using ‘gzip -d new.gz’.
+
+Now after decompressing the file, we check the file type again using the ‘file’ command. We see that it is of file type bzip2. So we use the tool bzip to decompress this file by using the command ‘bunzip2 new’.
+
+Now we have another compressed file! We run the ‘file’ command again and see that it is a gzip file. So we rename it again decompress it using gunzip as described above. Now when we check the file type, we find out that it’s a tar file. So we rename the file with .tar extension and then run the command ‘tar -xf new.tar’. The ‘-x’ flag tells tar to extract from the file and ‘-f’ flags tells it that it is a regular file.
+
+On running the ‘ls’ command, we see a new file named “data5.bin”. We check the file type and figure out that it is a .tar file. We know that this file has been compressed several times, so we go through the same process of finding the file, changing the extension in case it’s a gzip file, and then decompress it using the methods described above. We continue doing this until we finally get the text file. We then ‘cat’ out the “data8” file which has our password. Sweet!
+
+
+Level 13 -> Level 14
+Here, to get access to the next level, we will need an SSH key which can be used to get access to level 14. In the home directory, we can find the said ssh key by running ‘ls’.
+
+We can then copy this file to our local system and change its permission to 600, which is required for ssh private keys to work. We can then use this key to login as bandit14 using the command ‘ssh -i id_rsa bandit14@bandit.labs.overthewire.org -p 2220’. Here ‘id_rsa’ file has our private key.
+
+
+Level 14 -> Level 15
+The webpage for this level says “The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.” So we first need to find the password of bandit14 as we only have a private key and not the actual password for this user. Since we are the owner of the file “etc/bandit_pass/bandit14”, we can read the contents of this file and retrieve the password.
+
+Now that we have bandit14’s password, all we have to do is connect to the localhost at port 30000 and supply the password. We can use netcat to open a connection to our localhost. Netcat is a tool that can be used for a variety of things including port scanning and listening for traffic. We can connect to the localhost by running the command ‘nc localhost 30000’ and we get the password for bandit15!
+
+
+Level 15 -> Level 16
+To get the password for the next level, we will have to connect to the localhost over SSL on port 30001 and submit the current user’s password. We can do this by using “openssl”. We run the command ‘openssl s_client -connect localhost:30001’. This opens up the connection to the localhost. We then provide the password and retrieve bandit16’s password.
+
+
+Level 16 -> Level 17
+On this level, we first have to find the correct port in the range 31000 to 32000, connect to it on localhost over SSL, and submit the current user’s password to get the password for the next level. First, we need to find the correct port to connect to. We can do this using nmap. Nmap is a port scanner that tells us about all the open ports and the services they are running. So we do a quick nmap scan by running the command ‘nmap -p 31000–32000 localhost’. This shows us the following output.
+
+nmap output.
+We can then manually connect to each port till we find the correct one. Once we have the correct port, we can use the same openssl tool to connect to the localhost and retrieve the password in the similar fashion. The command is ‘openssl s_client -connect localhost:31790’. Here we submit the current user’s password and it then gives us an RSA private key for the next user.
+
+
+Level 17 -> Level 18
+In the home directory of bandti17, there are two files with almost the same content except for one line. That line has the password for the next level. We can find this line by using a tool called “diff”. We can run the command ‘diff passwords.old passwords.new’. This will give us the password for the next level.
+
+
+Level 18 -> Level 19
+This is an interesting challenge! When you login with bandit18’s credentials, we get access, see a “Byebye !” message and the session terminates. This is because the configuration in .bashrc is such that it will log you out when you try to log in. After looking around for a while, I figured out that ssh lets you execute a command when trying to open a connection. Amazing! So even if our shell terminates, it will retrieve the results of the command we execute. So Let’s try to list files in the home directory first. We run the command ‘ssh bandit18@bandit.labs.overthewire.org -p 2220 ls’. Here as you can see, I am trying to execute the ‘ls’ command. Let’s see what this does.
+
+ssh executed the ‘ls’ command and displayed the “readme” file in the home directory. Sweet! So this means we can also read the contents of this file. We run the command ‘ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme’ and voila! We get the password for bandit19.
+
+
+Level 19 -> Level 20
+The webpage for this level says that we need to use the setuid binary in the home directory to get the password for the user bandit20. Now setuid binary are files which let you run the file as if you were the owner of that file. It is a special type of user privilege. If you run the command ‘ls -la’ in the home directory, you will see “s” in the user permissions. You can also see that the owner of this suid binary is bandit20. So we can execute this binary as bandit20.
+
+Now to figure out what this binary does, we have to execute it. So we run the command ‘./bandit20-do’. On running this command, the binary tells us to “run a command as another user”. So we basically have to execute this binary along with a command of another user. So let’s try to print bandit20’s password as that user is the owner of this binary. we run the command ‘./bandir20-do cat /etc/bandit_pass/bandit20’. This gives us the password for the user bandit20.
