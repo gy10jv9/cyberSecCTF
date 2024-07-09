@@ -41,6 +41,7 @@ $ find / -user bandit7 -group bandit6 -size 33c 2> /dev/null
 $ cat /var/lib/dpkg/info/bandit7.password
 ```
 
+
 What I did there was redirect the "stderr" stream to /dev/null, basically discarding it, and therefore ensuring that it does not get printed on the terminal.
 
 Being comfortable with I/O redirection is an important part of being comfortable with the command line. Don't be afraid to get your hands dirty.

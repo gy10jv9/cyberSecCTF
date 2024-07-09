@@ -1,0 +1,10 @@
+A little bit of Theory
+uniq is a command that filters input and writes to the output. Specifically, it filters based on identical lines. It has a flag -u, which filters for unique lines (lines that appear only ones). Another interesting functionality is, for example, that it can also count (-c) or only return duplicate lines (-d).
+
+The command is often used with sort. For uniq to filter for unique lines, the lines need to be sorted. sort sorts the lines of a text file. Furthermore, it has flags for sorting in reverse (-r) and sorting numerically (-n).
+
+Solution
+To find the line that occurs only once in the file, we first sort the lines and then filter for the unique one.
+
+###
+$ sort data.txt | uniq -u
