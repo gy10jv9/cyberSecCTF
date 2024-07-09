@@ -1,0 +1,48 @@
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+owned by user bandit7
+owned by group bandit6
+33 bytes in size
+
+
+###
+This challenge is very similar to the last one, the only difference being that we will have to search the entire filesystem.
+
+We already know from the last challenge that using the find command is the best way to go about this.
+
+Once again, what flags of the find command are required to search for this file?
+
+Hint 1: Searching the man page will be enough to get the flags required
+
+Alright then. After searching the man page, we have found the flags.
+
+-user bandit7
+-group bandit6
+-size 33c
+
+Since the file is "somewhere on the server", we will have to run the search from the root / directory.
+
+So the final command would be
+
+$ find / -user bandit7 -group bandit6 -size 33c
+
+Be warned, since the user we used to log in is not root, the find command will visit a lot of directories which the bandit6 user does not the permissions to read. So we will encounter a lot of errors.
+
+How do we get the errors out of the way so that we get a "clean" result?
+
+Hint 2: A few web searches should yield a result. Read up on streams and I/O redirection
+
+If you couldn't figure that out, its ok!
+
+An easy way to get the errors out of the way is to send them to /dev/null as follows.
+
+```
+$ find / -user bandit7 -group bandit6 -size 33c 2> /dev/null
+$ cat /var/lib/dpkg/info/bandit7.password
+```
+
+What I did there was redirect the "stderr" stream to /dev/null, basically discarding it, and therefore ensuring that it does not get printed on the terminal.
+
+Being comfortable with I/O redirection is an important part of being comfortable with the command line. Don't be afraid to get your hands dirty.
+
+Note: A lot of programs will send useful error info to stderr in case of failure. So when debugging, and especially if there are a ton of error messages, it is common practice to redirect stderr to a file so that you can go through it later to figure out what happened.
