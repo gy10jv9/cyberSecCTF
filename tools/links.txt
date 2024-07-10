@@ -22,3 +22,10 @@ https://merri.cx/qrazybox/
 
 # cyberchef
 https://gchq.github.io/CyberChef/
+
+
++-------------------------------+
++       Web Exploitation        +
++-------------------------------+
+# Burb Suite Community
+https://portswigger.net/burp/releases/professional-community-2024-5-5?requestededition=community&requestedplatform=
