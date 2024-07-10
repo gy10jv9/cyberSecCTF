@@ -1,0 +1,11 @@
+# list all supported formats
+$ john --list=formats
+$ john --list=formats | grep -i <search_name>
+
+# Convert Binary Data to Hex:
+$ xxd -p level5.hash.bin > level5.hash.hex
+
+# Inspect the Hex Dump
+$ cat level5.hash.hex
+
+$ john --wordlist=dictionary.txt --format=Raw-MD5 level5.hash.hex

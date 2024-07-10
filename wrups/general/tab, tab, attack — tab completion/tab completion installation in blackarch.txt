@@ -1,0 +1,16 @@
+# Update System: Ensure your system is up to date.
+sudo pacman -Syu
+
+#Install Bash Completion: Install the bash-completion package which provides the necessary scripts for tab completion.
+sudo pacman -S bash-completion
+
+# Configure Bash: Ensure that the .bashrc file sources the bash-completion script. Open the .bashrc file with a text editor.
+nano ~/.bashrc
+
+#Source Bash Completion: Add the following lines to your .bashrc file if they are not already present:
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+
+#Reload Bash Configuration: Apply the changes made to .bashrc by sourcing the file.
+source ~/.bashrc

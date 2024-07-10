@@ -1,0 +1,5 @@
+In Linux, the chmod command is used to change the permissions of a file or directory. 
+
+chmod +x file    # Adds execute permission for all users
+chmod -w file    # Removes write permission for all users
+chmod -r file: Removes read permissions from the file.

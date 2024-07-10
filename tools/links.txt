@@ -13,3 +13,12 @@ https://www.bitvise.com/ssh-client
 +-------------------------------+
 # aperisolve
 https://www.aperisolve.com/
+
+# dcode
+https://www.dcode.fr/
+
+# qrazybox
+https://merri.cx/qrazybox/
+
+# cyberchef
+https://gchq.github.io/CyberChef/

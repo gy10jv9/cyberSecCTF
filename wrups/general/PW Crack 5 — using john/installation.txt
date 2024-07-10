@@ -1,0 +1,6 @@
+# change to root ($exit to exit)
+$ sudo -i
+
+$ sudo pacman -Syu
+$ sudo pacman -S john
+$ john --version
