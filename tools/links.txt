@@ -23,6 +23,12 @@ https://merri.cx/qrazybox/
 # cyberchef
 https://gchq.github.io/CyberChef/
 
+# vigenere solver
+https://www.guballa.de/vigenere-solver
+
+# text converter Tools
+http://www.unit-conversion.info/texttools/category/Converters#data
+
 
 +-------------------------------+
 +       Web Exploitation        +
