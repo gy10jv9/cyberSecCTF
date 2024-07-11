@@ -7,6 +7,9 @@ https://github.com/Rishu20/Blackarchwsl
 # Bitvise SSH Client
 https://www.bitvise.com/ssh-client
 
+# Wolfram for .m files
+https://www.wolfram.com/engine/?source=nav
+
 
 +-------------------------------+
 +       Online Tools            +
@@ -28,6 +31,12 @@ https://www.guballa.de/vigenere-solver
 
 # text converter Tools
 http://www.unit-conversion.info/texttools/category/Converters#data
+
+# GIF extractor
+https://ezgif.com/split
+
+# QR Decoder
+https://blog.qr4.nl/Online-QR-Code-Decoder.aspx
 
 
 +-------------------------------+
