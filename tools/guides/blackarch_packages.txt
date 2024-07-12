@@ -66,3 +66,9 @@ $ sudo pacman -S base-devel
 # Web Shells
 $ sudo pacman -S webshells
 
+
++-------------------------------+
++       Miscellaneous           +
++-------------------------------+
+# MKVTool
+# sudo pacman -S mkvtoolnix-cli mkvtoolnix-gui
