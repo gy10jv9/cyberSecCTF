@@ -72,3 +72,10 @@ $ sudo pacman -S webshells
 +-------------------------------+
 # MKVTool
 # sudo pacman -S mkvtoolnix-cli mkvtoolnix-gui
+
+
++-----------------------------------+
++       Password Cracker            +
++-----------------------------------+
+# Hashcat Password Cracker
+$ sudo pacman -S hashcat
