@@ -41,6 +41,10 @@ https://blog.qr4.nl/Online-QR-Code-Decoder.aspx
 # IEEE-754 Floating Point Converter for binary to float (esp for coordinates)
 https://www.h-schmidt.net/FloatConverter/IEEE754.html
 
+# Online Java and Apk Decompiler
+http://www.javadecompilers.com/
+
+
 +-------------------------------+
 +       Web Exploitation        +
 +-------------------------------+
